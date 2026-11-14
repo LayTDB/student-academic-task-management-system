@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Student Academic Task Manager</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <main class="container">
+    <section id="authView" class="card auth-card">
+      <h1>Student Academic Task Manager</h1>
+      <p class="muted">Organize subjects, deadlines, and school tasks in one place.</p>
+
+      <div class="tabs">
+        <button id="loginTab" class="tab active">Login</button>
+        <button id="signupTab" class="tab">Sign Up</button>
+      </div>
+
+      <form id="authForm">
+        <div id="nameField" class="field hidden">
+          <label for="name">Name</label>
+          <input id="name" autocomplete="name" />
+        </div>
+
+        <div class="field">
+          <label for="email">Email</label>
+          <input id="email" type="email" autocomplete="email" required />
+        </div>
+
+        <div class="field">
+          <label for="password">Password</label>
+          <input id="password" type="password" autocomplete="current-password" minlength="6" required />
+        </div>
+
+        <button class="primary full" type="submit" id="authSubmit">Login</button>
+        <p id="authMessage" class="message"></p>
+      </form>
+    </section>
+
+    <section id="appView" class="hidden">
+      <header class="topbar">
+        <div>
+          <h1>My Academic Tasks</h1>
+          <p id="welcomeText" class="muted"></p>
+        </div>
+        <button id="logoutBtn" class="secondary">Logout</button>
+      </header>
+
+      <section class="stats">
+        <div class="stat"><span>Total</span><strong id="totalStat">0</strong></div>
+        <div class="stat"><span>Pending</span><strong id="pendingStat">0</strong></div>
+        <div class="stat"><span>Completed</span><strong id="completedStat">0</strong></div>
+        <div class="stat"><span>Overdue</span><strong id="overdueStat">0</strong></div>
+      </section>
+
+      <div class="grid">
+        <section class="card">
+          <h2>Add Task</h2>
+          <form id="taskForm">
+            <div class="field">
+              <label for="taskTitle">Title</label>
+              <input id="taskTitle" placeholder="e.g. Software Engineering Chapter 1" required />
+            </div>
+            <div class="field">
+              <label for="taskDescription">Description</label>
+              <textarea id="taskDescription" rows="3" placeholder="Optional details"></textarea>
+            </div>
+            <div class="field">
+              <label for="taskSubject">Subject</label>
+              <select id="taskSubject">
+                <option value="">No subject</option>
+              </select>
+            </div>
+            <div class="field">
+              <label for="taskDeadline">Deadline</label>
+              <input id="taskDeadline" type="datetime-local" />
+            </div>
+            <button class="primary full" type="submit">Add Task</button>
+            <p id="taskMessage" class="message"></p>
+          </form>
+        </section>
+
+        <section class="card">
+          <div class="section-head">
+            <div>
+              <h2>Subjects</h2>
+              <p class="muted">Create subjects to organize your tasks.</p>
+            </div>
+          </div>
+          <form id="subjectForm" class="inline-form">
+            <input id="subjectName" placeholder="e.g. Software Engineering" required />
+            <button class="primary" type="submit">Add</button>
+          </form>
+          <div id="subjectList" class="subject-list"></div>
+        </section>
+      </div>
+
+      <section class="card">
+        <div class="section-head">
+          <div>
+            <h2>Tasks</h2>
+            <p class="muted">Search, filter, complete, edit, or delete your tasks.</p>
+          </div>
+          <div class="filters">
+            <input id="searchInput" placeholder="Search tasks..." />
+            <select id="statusFilter">
+              <option value="">All</option>
+              <option value="pending">Pending</option>
+              <option value="completed">Completed</option>
+            </select>
+          </div>
+        </div>
+        <div id="taskList" class="task-list"></div>
+      </section>
+    </section>
+  </main>
+
+  <script src="app.js"></script>
+</body>
+</html>
